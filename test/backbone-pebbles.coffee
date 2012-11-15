@@ -4,9 +4,6 @@ sinon = require "sinon"
 
 pebblify = require("../").pebblify
 
-sinon.stub().yieldsTo "perform", ->
-  console.log("omg")
-
 mockConnector =
   perform: ->
     request = $.Deferred()
