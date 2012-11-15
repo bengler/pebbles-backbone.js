@@ -28,7 +28,7 @@ describe 'backbone-pebbles', ->
     class FooClass extends Backbone.Model
       pebblify(@).with
         namespace: 'spacename'
-        connector:
+        service:
           perform: ->
             spy()
             then: (cb)->cb(spacename: {foo: "bar"})

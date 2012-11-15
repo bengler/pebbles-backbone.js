@@ -15,7 +15,7 @@ exports.pebblify = function (backboneClass) {
   return {
     "with": function (opts) {
 
-      if (opts.connector) {
+      if (opts.service) {
         backboneClass.prototype.sync = function (method, model, options) {
           var headers = {};
           if (!options.data && model && (method === 'create' || method === 'update')) {
@@ -23,7 +23,7 @@ exports.pebblify = function (backboneClass) {
             options.data = JSON.stringify(model.toJSON());
           }
           var url = typeof model.url === 'function' ? model.url() : model.url;
-          var promise = opts.connector.perform(methodMap[method], url, options.data, headers);
+          var promise = opts.service.perform(methodMap[method], url, options.data, headers);
           promise.then(options.success, options.error);
           return promise;
         };
