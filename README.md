@@ -2,7 +2,7 @@
 
 Make your Backbone models and collections Pebbles-powered
 
-[![Build Status](https://secure.travis-ci.org/bengler/backbone-pebbles.js.png)](http://travis-ci.org/bengler/backbone-pebbles.js)
+[![Build Status](https://secure.travis-ci.org/bengler/pebbles-backbone.js.png)](http://travis-ci.org/bengler/pebbles-backbone.js)
 
 ## Prerequisites
 
