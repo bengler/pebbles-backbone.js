@@ -1,0 +1,26 @@
+{
+  "name": "pebbles-backbone",
+  "version": "0.0.1",
+  "description": "Use pebbles.js with your Backbone models",
+  "main": "pebbles-backbone.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha test -r should"
+  },
+  "devDependencies": {
+    "should": "latest",
+    "mocha": "latest",
+    "coffee-script": "latest",
+    "backbone": "latest",
+    "sinon": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bengler/pebbles-backbone.js"
+  },
+  "keywords": [
+    "backbone",
+    "pebbles"
+  ],
+  "author": "",
+  "license": "MIT"
+}
