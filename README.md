@@ -1,4 +1,4 @@
-# Pebbles.js
+# pebbles-backbone.js
 
 Make your Backbone models and collections Pebbles-powered
 
