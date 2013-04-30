@@ -49,6 +49,7 @@ exports.pebblify = function (backboneClass) {
 
         backboneClass.prototype.parse = function () {
           var data = originalParse.apply(this, arguments);
+          if (data.pagination) this.pagination = data.pagination;
           if (!data.hasOwnProperty(opts.namespace)) {
             throw new Error("Missing namespace \"" + opts.namespace + "\" when parsing response for " + this.constructor.name);
           }
