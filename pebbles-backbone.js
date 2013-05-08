@@ -25,6 +25,8 @@ exports.pebblify = function (backboneClass) {
           var url = typeof model.url === 'function' ? model.url() : model.url;
           var promise = opts.service.perform(methodMap[method], url, options.data, headers);
 
+          model.trigger('request', model, promise, options);
+
           var success = options.success;
           options.success = function(resp, status, xhr) {
             if (success) success(resp, status, xhr);
