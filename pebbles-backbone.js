@@ -23,10 +23,9 @@ exports.pebblify = function (backboneClass) {
             options.data = JSON.stringify(model.toJSON());
           }
           var url = typeof model.url === 'function' ? model.url() : model.url;
+          
+          // Note: pebbles-service returns a promise, should probably return a jqXHR instead
           var promise = opts.service.perform(methodMap[method], url, options.data, headers);
-
-          model.trigger('request', model, promise, options);
-
           var success = options.success;
           options.success = function(resp, status, xhr) {
             if (success) success(resp, status, xhr);
@@ -40,6 +39,7 @@ exports.pebblify = function (backboneClass) {
           };
 
           promise.then(options.success, options.error);
+          model.trigger('request', model, promise, options);
           return promise;
         };
       }
