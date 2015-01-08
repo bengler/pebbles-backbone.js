@@ -36,11 +36,7 @@ exports.pebblify = function (backboneClass) {
             reqOpts.body = options.data;
           }
 
-          // Note: pebbles-service returns a promise, should probably return a jqXHR instead
           var promise = opts.service.request(reqOpts)
-            .then(function(response) {
-              return response.body;
-          });
 
           var success = options.success;
           options.success = function(resp, status, xhr) {
