@@ -1,6 +1,6 @@
 {
   "name": "pebbles-backbone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Use pebbles.js with your Backbone models",
   "main": "pebbles-backbone.js",
   "scripts": {
