@@ -23,17 +23,35 @@ exports.pebblify = function (backboneClass) {
             options.data = JSON.stringify(model.toJSON());
           }
           var url = typeof model.url === 'function' ? model.url() : model.url;
-          
+
+          var reqOpts = Object.assign({}, {
+            method: methodMap[method],
+            endpoint: url,
+            headers: headers
+          });
+          if (method == 'read') {
+            reqOpts.queryString = options.data
+          }
+          else {
+            reqOpts.body = options.data;
+          }
+
           // Note: pebbles-service returns a promise, should probably return a jqXHR instead
-          var promise = opts.service.perform(methodMap[method], url, options.data, headers);
+          var promise = opts.service.request(reqOpts)
+            .then(function(response) {
+              return response.body;
+          });
+
           var success = options.success;
           options.success = function(resp, status, xhr) {
             if (success) success(resp, status, xhr);
+            model.trigger('sync', model, resp, options);
           };
 
           var error = options.error;
           options.error = function(xhr, status, thrown) {
             if (error) error(model, xhr, options);
+            model.trigger('error', model, xhr, options);
           };
 
           promise.then(options.success, options.error);
