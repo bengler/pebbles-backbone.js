@@ -1,4 +1,2 @@
---require should
---compilers coffee:coffee-script
 --recursive
 --ui bdd
